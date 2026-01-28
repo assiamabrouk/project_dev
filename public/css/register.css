@@ -1,0 +1,578 @@
+.register-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--background) 0%, #f0f4f8 100%);
+    padding: var(--space-md);
+}
+
+.register-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    width: 100%;
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    min-height: 80vh;
+}
+
+/* Section branding (gauche) */
+.register-brand-section {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    color: var(--text-on-primary);
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.register-brand-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd' opacity='0.1'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.brand-content {
+    position: relative;
+    z-index: 1;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--text-on-primary);
+}
+
+.brand-logo h1 {
+    font-size: var(--font-size-3xl);
+    color: var(--text-on-primary);
+    margin: 0;
+}
+
+.brand-highlight {
+    color: #a5f3fc;
+    font-weight: 800;
+}
+
+.brand-tagline {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-md);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.brand-description {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-xl);
+    line-height: 1.6;
+}
+
+/* Section formulaire (droite) */
+.register-form-section {
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.form-header {
+    margin-bottom: var(--space-xl);
+}
+
+.form-header h2 {
+    font-size: var(--font-size-2xl);
+    color: var(--text-main);
+    margin-bottom: var(--space-xs);
+}
+
+.form-header p {
+    color: var(--text-muted);
+    margin-bottom: var(--space-lg);
+}
+
+/* Grille de formulaire pour les champs en ligne */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+/* Styles spécifiques pour les champs de formulaire */
+.form-group {
+    margin-bottom: var(--space-lg);
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-sm);
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.label-icon {
+    font-size: var(--font-size-sm);
+}
+
+.required-indicator {
+    color: var(--danger);
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon .form-control {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+    height: 48px;
+    font-size: var(--font-size-base);
+    width: 100%;
+}
+
+.input-with-icon .input-icon {
+    position: absolute;
+    left: var(--space-md);
+    color: var(--text-light);
+    pointer-events: none;
+}
+
+.input-with-icon .input-icon .toggle-password {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    padding: 0;
+    pointer-events: all;
+    transition: color var(--transition-fast);
+    position: absolute;
+    right: var(--space-md);
+    left: auto;
+}
+
+.input-with-icon .input-icon .toggle-password:hover {
+    color: var(--primary);
+}
+
+.input-with-icon.focused .input-icon {
+    color: var(--primary);
+}
+
+/* Sélecteur de type d'utilisateur */
+.user-type-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.type-option {
+    position: relative;
+}
+
+.type-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.type-card {
+    padding: var(--space-md);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    background: var(--surface);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.type-card:hover {
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.type-option input[type="radio"]:checked + .type-card {
+    border-color: var(--primary);
+    background: var(--primary-super-light);
+}
+
+.type-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: var(--surface-hover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-sm);
+    font-size: var(--font-size-lg);
+}
+
+.type-option input[type="radio"]:checked + .type-card .type-icon {
+    background: var(--primary);
+    color: var(--text-on-primary);
+}
+
+.type-name {
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: var(--space-xs);
+    font-size: var(--font-size-sm);
+}
+
+.type-description {
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+    line-height: 1.3;
+}
+
+/* Indicateur de force du mot de passe */
+.password-strength {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+.strength-meter {
+    height: 4px;
+    background: var(--border);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: var(--space-xs);
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    transition: width var(--transition-normal), background-color var(--transition-normal);
+}
+
+.strength-text {
+    font-size: var(--font-size-xs);
+    color: var(--text-light);
+}
+
+.strength-weak .strength-fill {
+    width: 25%;
+    background: var(--danger);
+}
+
+.strength-fair .strength-fill {
+    width: 50%;
+    background: var(--warning);
+}
+
+.strength-good .strength-fill {
+    width: 75%;
+    background: var(--info);
+}
+
+.strength-strong .strength-fill {
+    width: 100%;
+    background: var(--success);
+}
+
+/* Conditions d'utilisation */
+.terms-agreement {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+    padding: var(--space-md);
+    background: var(--surface-hover);
+    border-radius: var(--radius-md);
+}
+
+.terms-checkbox {
+    margin-top: 2px;
+}
+
+.terms-text {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.terms-text a {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.terms-text a:hover {
+    text-decoration: underline;
+}
+
+/* Bouton d'inscription */
+.btn-register {
+    width: 100%;
+    height: 48px;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: var(--space-lg);
+}
+
+.btn-register .btn-icon {
+    position: absolute;
+    right: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform var(--transition-normal);
+}
+
+.btn-register:hover .btn-icon {
+    transform: translateY(-50%) translateX(4px);
+}
+
+.btn-register.loading {
+    pointer-events: none;
+}
+
+.btn-register.loading .btn-loading {
+    position: absolute;
+    right: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: var(--radius-full);
+    animation: spin 1s linear infinite;
+}
+
+.btn-register.loading .btn-icon {
+    display: none;
+}
+
+/* Lien de connexion */
+.login-link {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-xl);
+}
+
+.login-link a {
+    color: var(--primary);
+    font-weight: 600;
+    margin-left: var(--space-xs);
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Informations de sécurité */
+.security-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: var(--success-light);
+    border: 1px solid var(--success);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.security-icon {
+    font-size: var(--font-size-lg);
+    flex-shrink: 0;
+}
+
+.security-text {
+    font-size: var(--font-size-sm);
+    color: var(--success);
+}
+
+/* Footer du formulaire */
+.form-footer {
+    text-align: center;
+    margin-top: auto;
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--border);
+}
+
+.form-footer p {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+}
+
+.footer-links a {
+    color: var(--text-light);
+    font-size: var(--font-size-xs);
+    transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+/* Messages d'erreur */
+.error-message {
+    color: var(--danger);
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+/* Champ d'upload d'image */
+.image-upload-container {
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.image-upload-wrapper {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    transition: transform var(--transition-normal);
+}
+
+.image-upload-wrapper:hover {
+    transform: scale(1.02);
+}
+
+.image-upload-label {
+    display: block;
+    cursor: pointer;
+}
+
+.image-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: var(--radius-full);
+    background-color: var(--surface-hover);
+    border: 3px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    transition: all var(--transition-normal);
+}
+
+.image-preview:hover {
+    border-color: var(--primary);
+    background-color: var(--primary-super-light);
+}
+
+.image-preview.has-image {
+    border-style: solid;
+    border-color: var(--primary);
+}
+
+.image-preview-icon {
+    font-size: 2rem;
+    color: var(--text-light);
+    margin-bottom: var(--space-xs);
+    transition: color var(--transition-normal);
+}
+
+.image-preview:hover .image-preview-icon {
+    color: var(--primary);
+}
+
+.image-preview-text {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    text-align: center;
+    max-width: 100px;
+}
+
+.image-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.image-preview.has-image .image-preview-img {
+    display: block;
+}
+
+.image-preview.has-image .image-preview-icon,
+.image-preview.has-image .image-preview-text {
+    display: none;
+}
+
+.image-upload-input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.image-upload-hint {
+    margin-top: var(--space-xs);
+    font-size: var(--font-size-xs);
+    color: var(--text-light);
+    text-align: center;
+}
+
+.image-upload-remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--danger);
+    color: var(--text-on-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: 2;
+}
+
+.image-preview.has-image:hover .image-upload-remove {
+    opacity: 1;
+}
