@@ -15,8 +15,6 @@
                         @csrf
                         @method('PUT')
                         
-                        <!-- Formulaire مشابه للإنشاء -->
-                        
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary">Mettre à jour</button>
                             <a href="{{ route('users.index') }}" class="btn btn-secondary">Annuler</a>

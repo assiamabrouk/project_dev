@@ -23,7 +23,7 @@ class CategorieRessourceSeeder extends Seeder
             CategorieRessource::create([
                 'nom' => $categorie,
                 'description' => $categorie,
-                'img' => 'categorie_images/cat.png',
+                'img' => 'categorie_images/'.$categorie.'.png',
                 'user_id' => rand(2, 3),
             ]);
         }

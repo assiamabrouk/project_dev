@@ -107,3 +107,47 @@ Route::post('discussions/{discussion}/moderate', [DiscussionController::class, '
 Route::delete('discussions/{discussion}', [DiscussionController::class, 'destroy'])
     ->name('discussions.delete')
     ->middleware('auth');
+
+// Routes pour la gestion des rôles et responsabilités (Admin seulement)
+Route::middleware(['auth'])->group(function () {
+    
+    // Prefix pour l'administration
+    Route::prefix('admin')->middleware('can:admin')->group(function () {
+        
+        // ========== GESTION DES RÔLES ET RESPONSABILITÉS ==========
+        
+        // Formulaire de gestion des responsabilités
+        Route::get('/users/{user}/gestion-responsabilites', 
+            [UtilisateurController::class, 'showGestionResponsabilites'])
+            ->name('users.gestion-responsabilites.form');
+        
+        // Traitement de la gestion des responsabilités
+        Route::post('/users/{user}/gestion-responsabilites', 
+            [UtilisateurController::class, 'gestionResponsabilites'])
+            ->name('users.gestion-responsabilites');
+        
+        // API pour assigner/retirer une catégorie (AJAX)
+        Route::post('/users/{user}/categorie/{categorie}/toggle-assignation', 
+            [UtilisateurController::class, 'toggleAssignationCategorie'])
+            ->name('users.categorie.toggle-assignation');
+        
+        // Retirer toutes les catégories d'un responsable
+        Route::post('/users/{user}/retirer-toutes-categories', 
+            [UtilisateurController::class, 'retirerToutesCategories'])
+            ->name('users.retirer-toutes-categories');
+        
+        // Changer le rôle sans affecter les catégories
+        Route::post('/users/{user}/changer-role-seul', 
+            [UtilisateurController::class, 'changerRoleSeul'])
+            ->name('users.changer-role-seul');
+        
+        // Transfert de responsabilité entre utilisateurs
+        Route::get('/users/{user}/transfert-responsabilite', 
+            [UtilisateurController::class, 'showTransfertResponsabilite'])
+            ->name('users.transfert-responsabilite.form');
+        
+        Route::post('/users/{user}/transfert-responsabilite', 
+            [UtilisateurController::class, 'transfertResponsabilite'])
+            ->name('users.transfert-responsabilite');
+    });
+});

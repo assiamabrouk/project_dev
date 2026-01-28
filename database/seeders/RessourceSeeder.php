@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Ressource;
 use App\Models\CategorieRessource;
+use Illuminate\Support\Arr;
 
 class RessourceSeeder extends Seeder
 {
@@ -66,7 +67,7 @@ class RessourceSeeder extends Seeder
             foreach ($ressources as $ressourceData) {
                 Ressource::create([
                     'nom' => $ressourceData['nom'],
-                    'img' => 'ress.png',
+                    'img' => Arr::random(['ress.png', 'ress2.png','ress3.png']),
                     'description' => $ressourceData['description'],
                     'cpu' => '4 vCPU',
                     'ram' => '8 Go',

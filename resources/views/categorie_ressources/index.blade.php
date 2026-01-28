@@ -176,7 +176,7 @@
         <!-- Cartes des catégories -->
         @foreach($displayCategories as $categorie)
         <div class="category-card" data-id="{{ $categorie->id_categorie }}">
-            <a href="{{ route('categorie_ressources.show', $categorie->id_categorie) }}">
+            <a href="{{ route('ressources.index', $categorie->id_categorie) }}">
                 <!-- Image de la catégorie -->
                 <div class="category-image">
                     @if($categorie->img)

@@ -148,7 +148,7 @@
                                     </td>
                                     <td>{{ $user->created_at->format('d/m/Y') }}</td>
                                     <td>
-                                        <div class="btn-group" role="group" style="display:flex ; flex-direction: column;">    
+                                        <div class="btn-group" role="group" style="display:flex ; flex-direction: rows;">    
                                             <!-- Changer statut -->
                                                 <!-- Éditer -->
                                             <a href="{{ route('utilisateurs.edit', $user->id) }}" 

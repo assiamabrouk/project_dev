@@ -303,7 +303,7 @@
                 <!-- Historique des Réservations -->
                 <div style="margin-bottom: 2rem;">
                     <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: #4b5563;">
-                        <i class="fas fa-history" style="margin-right: 0.5rem;"></i> Historique de mes Réservations
+                        <i class="fas fa-history" style="margin-right: 0.5rem;"></i> Historique
                     </h4>
                     <div style="display: flex; flex-direction: column; gap: 0.75rem;">
                         @forelse($userHistory['reservationHistory'] as $history)
@@ -335,7 +335,7 @@
                         @empty
                             <div style="text-align: center; padding: 1rem; color: #9ca3af;">
                                 <i class="fas fa-inbox" style="font-size: 2rem; margin-bottom: 0.5rem; display: block;"></i>
-                                Aucun historique de réservation.
+                                Aucun historique.
                             </div>
                         @endforelse
                     </div>

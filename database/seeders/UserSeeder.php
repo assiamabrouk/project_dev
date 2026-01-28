@@ -29,8 +29,8 @@ class UserSeeder extends Seeder
                 'email_verified_at' => $now,
             ],
             [
-                'nom' => 'Benali',
-                'prenom' => 'Marouan',
+                'nom' => 'Respo',
+                'prenom' => 'filan',
                 'email' => 'responsable@test.com',
                 'telephone' => '0698765432',
                 'img' => 'user2.png',
